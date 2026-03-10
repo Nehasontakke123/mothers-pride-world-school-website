@@ -1,115 +1,118 @@
 .cbse-wrapper{
   width:100%;
+  background:linear-gradient(90deg,#ffffff,#fafafa);
   overflow:hidden;
-  background:#f3f4f6;
-  border-top:1px solid #e5e7eb;
-  border-bottom:1px solid #e5e7eb;
-}
+  padding:22px 0;
 
-/* TRACK */
+  /* Premium black borders */
+  border-top:2px solid #000;
+  border-bottom:2px solid #000;
+}
 
 .cbse-track{
   display:flex;
-  gap:50px;
   width:max-content;
-  padding:10px 0;
-
-  /* smooth animation */
-  animation:cbseScroll 25s linear infinite;
-
-  /* blur fix */
-  will-change: transform;
-  transform: translate3d(0,0,0);
-  backface-visibility:hidden;
+  animation:scroll 28s linear infinite;
 }
-
-/* hover stop */
 
 .cbse-wrapper:hover .cbse-track{
-  animation-play-state:paused;
+  animation-play-state: paused;
 }
 
-/* item */
+/* Card */
 
 .cbse-item{
   display:flex;
   align-items:center;
-  gap:12px;
-  white-space:nowrap;
+  gap:20px;
+  margin-right:70px;
+  padding:12px 22px;
+
+  border-radius:12px;
+
+  /* premium card */
+  background:#fff;
+  border:1.5px solid #000;
+
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
+
+  transition:all 0.3s ease;
 }
 
-/* badge */
+.cbse-item:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Badge */
 
 .cbse-badge{
-  background:#dc2626;
+  background:linear-gradient(45deg,#e11d2e,#ff4d4d);
   color:white;
-  font-size:11px;
-  padding:4px 10px;
-  border-radius:20px;
-  font-weight:700;
+  padding:8px 16px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
   letter-spacing:1px;
 }
 
-/* text */
+/* Text */
 
 .cbse-text{
-  font-size:14px;
+  color:#222;
+  font-size:16px;
   font-weight:600;
-  color:#374151;
-
-  /* blur fix */
-  -webkit-font-smoothing: antialiased;
+  letter-spacing:1px;
 }
 
-/* button */
+/* Button */
 
 .cbse-btn{
-  background:white;
-  border:1px solid #dc2626;
-  color:#dc2626;
-  padding:6px 16px;
-  border-radius:25px;
-  font-size:12px;
-  font-weight:600;
+  background:#e11d2e;
+  border:none;
+  color:white;
+  padding:9px 20px;
+  border-radius:8px;
   cursor:pointer;
-  transition:all .25s ease;
+  font-size:14px;
+  font-weight:500;
+  transition:all 0.3s ease;
 }
 
 .cbse-btn:hover{
-  background:#dc2626;
-  color:white;
+  background:#c91423;
+  transform:translateY(-2px);
+  box-shadow:0 6px 15px rgba(225,29,46,0.4);
 }
 
-/* smooth infinite animation */
+/* Animation */
 
-@keyframes cbseScroll{
-
-  0%{
-    transform:translate3d(0,0,0);
+@keyframes scroll{
+  from{
+    transform:translateX(0);
   }
-
-  100%{
-    transform:translate3d(-50%,0,0);
+  to{
+    transform:translateX(-50%);
   }
-
 }
 
-/* mobile */
+/* Mobile */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
-  .cbse-track{
-    gap:30px;
-    animation-duration:18s;
+  .cbse-item{
+    gap:12px;
+    margin-right:35px;
+    padding:8px 14px;
   }
 
   .cbse-text{
-    font-size:12px;
+    font-size:14px;
   }
 
   .cbse-btn{
-    font-size:11px;
-    padding:5px 12px;
+    padding:6px 12px;
+    font-size:12px;
   }
 
 }

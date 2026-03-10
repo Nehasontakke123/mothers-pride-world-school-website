@@ -14,8 +14,9 @@ const HomePage = () => {
       
 
       {/* Hero Slider */}
-      <HomeSlider />
       <CBSEBanner/>
+      <HomeSlider />
+      
       <AboutSection/>
       <MissionVision/>
       

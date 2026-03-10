@@ -107,6 +107,114 @@
 // };
 
 // export default MessageSection;
+
+
+
+// import { useState } from "react";
+// import chairmanImg from "../assets/images/Chairman.jpeg";
+// import principalImg from "../assets/images/principal.jpeg";
+
+// const profiles = [
+//   {
+//     name: "Sabino D'Souza",
+//     role: "Founder & Chairman, MPWS",
+//     title: "Chairman's Message",
+//     image: chairmanImg,
+//     message:
+//       "It has been my endeavour to provide a conductive environment for building a solid foundation in the early years of our pupils' life. Each child is special and God's miracle, so it is our duty to nurture talents, inculcate right values and encourage innovation.",
+//   },
+//   {
+//     name: "Vandana D'Souza",
+//     role: "Principal, MPWS",
+//     title: "Principal's Message",
+//     image: principalImg,
+//     message:
+//       "Welcome to Mother's Pride World family. We strive to provide not only academic excellence but also a loving and secure environment for every student.",
+//   },
+// ];
+
+// const MessageSection = () => {
+//   const [index, setIndex] = useState(0);
+//   const profile = profiles[index];
+
+//   return (
+//     <section className="w-full py-24 bg-gray-100">
+
+//       <div className="max-w-7xl mx-auto px-6">
+
+//         <div className="grid md:grid-cols-2 bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+//           {/* LEFT FULL IMAGE */}
+//           <div className="h-[520px]">
+
+//             <img
+//               src={profile.image}
+//               alt={profile.name}
+//               className="w-full h-full object-cover"
+//             />
+
+//           </div>
+
+//           {/* RIGHT MESSAGE */}
+//           <div className="relative p-14 flex flex-col justify-center">
+
+//             <div className="absolute top-8 right-8 text-6xl text-gray-200 font-serif">
+//               ❝
+//             </div>
+
+//             <h2 className="text-3xl font-bold text-gray-900 mb-4">
+//               {profile.title}
+//             </h2>
+
+//             <div className="w-16 h-1 bg-red-600 mb-6"></div>
+
+//             <p className="text-gray-600 leading-relaxed text-lg mb-10">
+//               {profile.message}
+//             </p>
+
+//             <div className="border-t pt-6">
+
+//               <h3 className="text-2xl font-semibold text-gray-900">
+//                 {profile.name}
+//               </h3>
+
+//               <p className="text-red-600 font-medium">
+//                 {profile.role}
+//               </p>
+
+//             </div>
+
+//             {/* Pagination */}
+//             <div className="flex gap-3 mt-8">
+
+//               {profiles.map((_, i) => (
+//                 <button
+//                   key={i}
+//                   onClick={() => setIndex(i)}
+//                   className={`h-3 rounded-full transition-all duration-300 ${
+//                     i === index
+//                       ? "w-8 bg-red-600"
+//                       : "w-3 bg-gray-300"
+//                   }`}
+//                 />
+//               ))}
+
+//             </div>
+
+//           </div>
+
+//         </div>
+
+//       </div>
+
+//     </section>
+//   );
+// };
+
+// export default MessageSection;
+
+
+
 import { useState } from "react";
 import chairmanImg from "../assets/images/Chairman.jpeg";
 import principalImg from "../assets/images/principal.jpeg";
@@ -131,8 +239,18 @@ const profiles = [
 ];
 
 const MessageSection = () => {
+
   const [index, setIndex] = useState(0);
+
   const profile = profiles[index];
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % profiles.length);
+  };
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? profiles.length - 1 : prev - 1));
+  };
 
   return (
     <section className="w-full py-24 bg-gray-100">
@@ -141,7 +259,7 @@ const MessageSection = () => {
 
         <div className="grid md:grid-cols-2 bg-white rounded-3xl shadow-2xl overflow-hidden">
 
-          {/* LEFT FULL IMAGE */}
+          {/* LEFT IMAGE */}
           <div className="h-[520px]">
 
             <img
@@ -181,20 +299,39 @@ const MessageSection = () => {
 
             </div>
 
-            {/* Pagination */}
-            <div className="flex gap-3 mt-8">
+            {/* Navigation Buttons */}
+            <div className="flex items-center gap-6 mt-8">
 
-              {profiles.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIndex(i)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    i === index
-                      ? "w-8 bg-red-600"
-                      : "w-3 bg-gray-300"
-                  }`}
-                />
-              ))}
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-red-600 hover:text-white rounded-full transition"
+              >
+                ❮
+              </button>
+
+              {/* Pagination */}
+              <div className="flex gap-3">
+
+                {profiles.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    className={`h-3 rounded-full transition-all duration-300 ${
+                      i === index
+                        ? "w-8 bg-red-600"
+                        : "w-3 bg-gray-300"
+                    }`}
+                  />
+                ))}
+
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-red-600 hover:text-white rounded-full transition"
+              >
+                ❯
+              </button>
 
             </div>
 
