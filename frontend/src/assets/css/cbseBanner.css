@@ -1,0 +1,115 @@
+.cbse-wrapper{
+  width:100%;
+  overflow:hidden;
+  background:#f3f4f6;
+  border-top:1px solid #e5e7eb;
+  border-bottom:1px solid #e5e7eb;
+}
+
+/* TRACK */
+
+.cbse-track{
+  display:flex;
+  gap:50px;
+  width:max-content;
+  padding:10px 0;
+
+  /* smooth animation */
+  animation:cbseScroll 25s linear infinite;
+
+  /* blur fix */
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  backface-visibility:hidden;
+}
+
+/* hover stop */
+
+.cbse-wrapper:hover .cbse-track{
+  animation-play-state:paused;
+}
+
+/* item */
+
+.cbse-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  white-space:nowrap;
+}
+
+/* badge */
+
+.cbse-badge{
+  background:#dc2626;
+  color:white;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+/* text */
+
+.cbse-text{
+  font-size:14px;
+  font-weight:600;
+  color:#374151;
+
+  /* blur fix */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* button */
+
+.cbse-btn{
+  background:white;
+  border:1px solid #dc2626;
+  color:#dc2626;
+  padding:6px 16px;
+  border-radius:25px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.cbse-btn:hover{
+  background:#dc2626;
+  color:white;
+}
+
+/* smooth infinite animation */
+
+@keyframes cbseScroll{
+
+  0%{
+    transform:translate3d(0,0,0);
+  }
+
+  100%{
+    transform:translate3d(-50%,0,0);
+  }
+
+}
+
+/* mobile */
+
+@media (max-width:768px){
+
+  .cbse-track{
+    gap:30px;
+    animation-duration:18s;
+  }
+
+  .cbse-text{
+    font-size:12px;
+  }
+
+  .cbse-btn{
+    font-size:11px;
+    padding:5px 12px;
+  }
+
+}
